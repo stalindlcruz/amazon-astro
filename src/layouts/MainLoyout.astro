@@ -1,6 +1,7 @@
 ---
 import HeaderComponent from "../components/HeaderComponent.astro";
 import NavComponent from "../components/NavComponent.astro";
+import MainComponent from "../components/MainComponent.astro";
 import FooterComponent from "../components/FooterComponent.astro";
 import "../styles/global.css";
 
@@ -30,7 +31,9 @@ const tittle = "Amazon.com";
   <body>
     <HeaderComponent />
     <NavComponent />
-    <main></main>
+    <MainComponent>
+      <h2 class="h2-products">Products</h2>
+    </MainComponent>
     <FooterComponent />
 
     <script
