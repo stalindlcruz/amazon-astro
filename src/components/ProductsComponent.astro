@@ -11,6 +11,10 @@ const products: Product[] = await result.json();
     border-radius: 20px;
   }
 
+  .a-card {
+    text-decoration: none;
+  }
+
   .div-col {
     /* display: grid; */
     /* justify-content: center; */
@@ -65,19 +69,21 @@ const products: Product[] = await result.json();
       {
         products.map((product) => (
           <div class="col-lg-3 col-md-6 col-sm-12 div-col">
-            <div class="card h-100">
-              <img
-                src={product.image}
-                class="card-img-top "
-                alt={product.title}
-                style="height: 200px; object-fit: contain;"
-              />
-              <div class="card-body div-text">
-                <h5 class="card-title">{product.title}</h5>
-                <p class="card-text">${product.price}</p>
+            <a href={`/${product.id}`} class="a-card">
+              <div class="card h-100">
+                <img
+                  src={product.image}
+                  class="card-img-top "
+                  alt={product.title}
+                  style="height: 200px; object-fit: contain;"
+                />
+                <div class="card-body div-text">
+                  <h5 class="card-title">{product.title}</h5>
+                  <p class="card-text">${product.price}</p>
+                </div>
+                <button class="btnCart mx-auto d-block">add to cart</button>
               </div>
-              <button class="btnCart mx-auto d-block">add to cart</button>
-            </div>
+            </a>
           </div>
         ))
       }

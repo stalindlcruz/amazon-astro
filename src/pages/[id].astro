@@ -1,0 +1,31 @@
+---
+import type { GetStaticPaths } from "astro";
+import * as all from "../assets/db.json"; // No se necesita porque recorrimos cada product con .map() para obtener el id y devolver el array de objetos.
+import type { Product } from "../interfaces/IProducts";
+import MainLoyout from "../layouts/MainLoyout.astro";
+
+export const getStaticPaths = (async () => {
+  const result = await fetch("https://fakestoreapi.com/products");
+  const products: Product[] = await result.json();
+
+  //   return [
+  //     {
+  //       params: { id: "1" },
+  //     },
+  //   ];
+
+  // return all.data;
+
+  return products.map((product) => {
+    return {
+      params: { id: product.id.toString() },
+      props: { product },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { id } = Astro.params;
+const { product } = Astro.props;
+---
+
+<MainLoyout></MainLoyout>
