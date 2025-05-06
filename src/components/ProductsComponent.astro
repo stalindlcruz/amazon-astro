@@ -85,4 +85,16 @@ const products: Product[] = await result.json();
   </div>
 </main>
 
-<script></script>
+<script>
+  // const col = document.querySelectorAll("div.div-col");
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const cols = document.querySelectorAll("div.div-col");
+
+    cols.forEach((col) => {
+      col.addEventListener("click", () => {
+        console.log("Hola");
+      });
+    });
+  });
+</script>
