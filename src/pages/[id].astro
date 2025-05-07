@@ -156,11 +156,17 @@ const { product } = Astro.props;
   }
 </style>
 
-<MainLoyout>
+<MainLoyout tittle={product.title}>
   <section class="container py-5">
     <div class="row product-container">
       <div class="col-md-4 text-center">
-        <img class="imageProduct" src={product.image} alt={product.title} />
+        <img
+          transition:name={product.image}
+          transition:animate="slide"
+          class="imageProduct"
+          src={product.image}
+          alt={product.title}
+        />
       </div>
 
       <div class="col-md-8">

@@ -1,10 +1,13 @@
 ---
 import MainLoyout from "../layouts/MainLoyout.astro";
 import ProductsComponent from "../components/ProductsComponent.astro";
+import type { Product } from "../interfaces/IProducts";
+
+const result = await fetch("https://fakestoreapi.com/products");
+const products: Product[] = await result.json();
 ---
 
-<MainLoyout>
-  <ProductsComponent>
-    <h2 class="h2-products">Amazon Fashion</h2>
-  </ProductsComponent>
+<MainLoyout tittle="Amazon.com">
+  <h2 class="h2-products">Amazon Fashion</h2>
+  <ProductsComponent products={products} />
 </MainLoyout>

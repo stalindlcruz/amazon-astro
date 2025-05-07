@@ -1,8 +1,11 @@
 ---
 import type { Product } from "../interfaces/IProducts";
 
-const result = await fetch("https://fakestoreapi.com/products");
-const products: Product[] = await result.json();
+interface Props {
+  products: Product[];
+}
+
+const { products } = Astro.props as Props;
 ---
 
 <style>
@@ -56,14 +59,6 @@ const products: Product[] = await result.json();
 </style>
 
 <section>
-  <div class="container cont d-flex justify-content-center">
-    <div class="row">
-      <div class="col-auto">
-        <slot />
-      </div>
-    </div>
-  </div>
-
   <div class="container my-4">
     <div class="row g-4">
       {
@@ -72,6 +67,8 @@ const products: Product[] = await result.json();
             <a href={`/${product.id}`} class="a-card">
               <div class="card h-100">
                 <img
+                  transition:name={product.image}
+                  transition:animate="slide"
                   src={product.image}
                   class="card-img-top "
                   alt={product.title}
@@ -91,16 +88,4 @@ const products: Product[] = await result.json();
   </div>
 </section>
 
-<script>
-  // const col = document.querySelectorAll("div.div-col");
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const cols = document.querySelectorAll("div.div-col");
-
-    cols.forEach((col) => {
-      col.addEventListener("click", () => {
-        console.log("Hola");
-      });
-    });
-  });
-</script>
+<script></script>

@@ -5,6 +5,10 @@ body {
 }
 
 .h2-products {
+    display: flex;
+    justify-content: center;
     color: #232f3e;
     text-decoration: underline;
+    background-color: #535b642c;
+    border-radius: 20px;
 }

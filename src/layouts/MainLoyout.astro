@@ -4,8 +4,13 @@ import NavComponent from "../components/NavComponent.astro";
 import ProductsComponent from "../components/ProductsComponent.astro";
 import FooterComponent from "../components/FooterComponent.astro";
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 
-const tittle = "Amazon.com";
+interface Props {
+  tittle: string;
+}
+
+const { tittle } = Astro.props as Props;
 ---
 
 <html lang="en">
@@ -27,6 +32,7 @@ const tittle = "Amazon.com";
     <title>
       {tittle}
     </title>
+    <ClientRouter />
   </head>
   <body>
     <HeaderComponent />
